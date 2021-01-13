@@ -27,4 +27,28 @@ router.post(
   }
 );
 
+router.get(
+  '/',
+  async (req, res, next) => {
+    try {
+      const pets =await Pets.find({})
+      res.status(200).json(pets);
+    } catch (e) {
+      next(e);
+    }
+  }
+);
+
+router.delete(
+  '/',
+  async (req, res, next) => {
+    try {
+    await Pets.findOneAndRemove(req.body.id);
+      res.status(200).json(true);
+    } catch (e) {
+      next(e);
+    }
+  }
+);
+
 module.exports = router;

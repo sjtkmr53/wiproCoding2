@@ -41,5 +41,20 @@ describe('functional - Pets', () => {
         const res = await request(app).post('/pets').send(pets);
         expect(res.status).to.equal(201);
     });
+
+    it('get list of all pates ', async () => {
+        const res = await request(app).get('/pets').send();
+        expect(res.status).to.equal(200);
+    });
+
+    it('delete element based on the ID ', async () => {
+        let obj = new Object();
+        obj.id ="5ffec7e03a3a9427d4942acf"
+        const res = await request(app).get('/pets').send(obj);
+        expect(res.status).to.equal(200);
+    });
+
+
+    
 });
 
