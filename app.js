@@ -3,6 +3,8 @@ const express = require('express');
 const routes = require('./routes');
 const { ValidationError, NotFoundError } = require('./lib/errors');
 
+const utils = require ("./test/utils")
+
 const app = express();
 
 app.use(express.json({ limit: '100kb' }));
@@ -20,5 +22,9 @@ app.use('/', (err, req, res, next) => {
     message: err.message,
   });
 });
+
+app.listen(4002, function(){
+  console.log("app is running on port 4002")
+})
 
 module.exports = app;
